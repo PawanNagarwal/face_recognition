@@ -775,19 +775,6 @@ with tab3:
 
 with tab4:
     st.header("🔴 Live Stream Face Surveillance")
-
-    st.markdown("""
-    <div class="live-tip">
-    🔴 <b>True Real-Time Mode</b> — This tab streams your webcam live through the browser via WebRTC.
-    Every frame is analyzed by InsightFace in the backend (recognition runs every ~10 frames for CPU performance).
-    <br><br>
-    • <span style="color:#22c55e;font-weight:600;">Green box + name</span> = Face recognized in database<br>
-    • <span style="color:#ef4444;font-weight:600;">Red box + UNKNOWN</span> = Face NOT in database → RED FLAG raised<br>
-    • A status bar appears at the top of the live feed showing overall frame status.<br><br>
-    <b>Requires:</b> <code>pip install streamlit-webrtc</code>
-    </div>
-    """, unsafe_allow_html=True)
-
     db_live = load_db()
     if not db_live:
         st.warning("⚠️ No faces enrolled yet. Please enroll faces first using the sidebar enrollment options.")
