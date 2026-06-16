@@ -1,0 +1,9 @@
+streamlit
+numpy
+Pillow
+opencv-python
+insightface
+pandas
+av
+streamlit-webrtc
+onnxruntime
