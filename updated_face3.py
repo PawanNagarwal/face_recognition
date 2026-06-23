@@ -470,6 +470,10 @@ def inject_css():
         text-align: center; padding: 44px 22px; color: var(--muted); border-radius: 18px;
         background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.10);
     }
+    /* Hide Streamlit top-right toolbar */
+    [data-testid="stToolbar"] {
+        display: none !important;
+    }
     </style>
     """, unsafe_allow_html=True)
 
