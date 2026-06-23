@@ -594,28 +594,28 @@ with st.sidebar:
             else:
                 st.error("Enrollment failed. Ensure photos contain a clear visible face.")
 
-    with st.expander("Video Enroll", expanded=False):
-        st.markdown('<div class="sidebar-note">Extract unique faces from a video and assign names in the gallery tab.</div>', unsafe_allow_html=True)
-        video_file = st.file_uploader("Upload Video", type=["mp4","avi","mov","mkv"], key="video_enroll")
-        frame_interval = st.number_input("Sample every N frames", min_value=1, max_value=120, value=FRAME_SAMPLE_INTERVAL, key="sidebar_frame_interval")
-        min_face_size = st.number_input("Min face size (px)", min_value=20, max_value=300, value=MIN_FACE_SIZE, key="sidebar_min_face_size")
-        if video_file:
-            st.video(video_file)
-        if st.button("🎞️ Extract Faces from Video", disabled=not video_file, key="sidebar_extract_faces_btn"):
-            suffix = os.path.splitext(video_file.name)[1] if video_file.name else ".mp4"
-            with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
-                tmp.write(video_file.read())
-                tmp_path = tmp.name
-            with st.spinner("Processing video..."):
-                unique_faces, err = extract_faces_from_video(model, tmp_path, int(frame_interval), int(min_face_size))
-            os.remove(tmp_path)
-            if err:
-                st.error(err)
-            elif not unique_faces:
-                st.warning("No faces detected.")
-            else:
-                st.session_state.video_faces = unique_faces
-                st.success(f"Found {len(unique_faces)} unique faces. Review them in the gallery section below.")
+    # with st.expander("Video Enroll", expanded=False):
+    #     st.markdown('<div class="sidebar-note">Extract unique faces from a video and assign names in the gallery tab.</div>', unsafe_allow_html=True)
+    #     video_file = st.file_uploader("Upload Video", type=["mp4","avi","mov","mkv"], key="video_enroll")
+    #     frame_interval = st.number_input("Sample every N frames", min_value=1, max_value=120, value=FRAME_SAMPLE_INTERVAL, key="sidebar_frame_interval")
+    #     min_face_size = st.number_input("Min face size (px)", min_value=20, max_value=300, value=MIN_FACE_SIZE, key="sidebar_min_face_size")
+    #     if video_file:
+    #         st.video(video_file)
+    #     if st.button("🎞️ Extract Faces from Video", disabled=not video_file, key="sidebar_extract_faces_btn"):
+    #         suffix = os.path.splitext(video_file.name)[1] if video_file.name else ".mp4"
+    #         with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
+    #             tmp.write(video_file.read())
+    #             tmp_path = tmp.name
+    #         with st.spinner("Processing video..."):
+    #             unique_faces, err = extract_faces_from_video(model, tmp_path, int(frame_interval), int(min_face_size))
+    #         os.remove(tmp_path)
+    #         if err:
+    #             st.error(err)
+    #         elif not unique_faces:
+    #             st.warning("No faces detected.")
+    #         else:
+    #             st.session_state.video_faces = unique_faces
+    #             st.success(f"Found {len(unique_faces)} unique faces. Review them in the gallery section below.")
 
     with st.expander("Bulk Folder Enroll", expanded=False):
         st.markdown('<div class="sidebar-note">Upload many files at once. Each filename becomes the identity name.</div>', unsafe_allow_html=True)
