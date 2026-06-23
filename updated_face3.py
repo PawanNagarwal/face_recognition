@@ -776,8 +776,8 @@ with tab2:
         )
 
 with tab3:
-    section_header("Live Stream Surveillance", "Run continuous webcam monitoring through WebRTC, monitor red-flag activity, and inspect the live detection panel with cleaner operational controls.")
-    st.markdown('<div class="tip-box"><b>Live mode:</b> Recognition is executed every N frames for CPU efficiency. Lower recognition intervals increase responsiveness but also increase compute cost. Unknown faces immediately trigger a red-flag event and are added to the alert log.</div>', unsafe_allow_html=True)
+    section_header("Live Stream Surveillance", "Perform Facial Recognition Analysis on Live Camera Feed")
+    st.markdown('<div class="tip-box"><b>Live mode:</b> Recognition is executed every N frames, Unknown faces immediately trigger a red-flag event and are added to the alert log.</div>', unsafe_allow_html=True)
     db_live = load_db()
     if not db_live:
         st.warning("No faces enrolled yet. Please enroll identities first using the sidebar.")
