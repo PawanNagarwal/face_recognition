@@ -1,2 +1,8 @@
 [theme]
 base = "dark"  
+
+[client]
+toolbarMode = "minimal"
+
+[ui]
+hideTopBar = true
