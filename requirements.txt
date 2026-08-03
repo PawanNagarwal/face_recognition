@@ -1,13 +1,9 @@
 streamlit==1.47.1
-
-numpy==1.26.4
+numpy
 pandas==2.2.3
 Pillow==11.3.0
-
-opencv-python-headless==4.10.0.84
-
-onnxruntime==1.19.2
+opencv-python-headless
+onnxruntime
 insightface==0.7.3
-
 av>=14.0.0
 streamlit-webrtc==0.62.4
